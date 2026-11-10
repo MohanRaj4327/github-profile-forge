@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GitHub Profile README Prompt Generator | By Mohan Raj</title>
+  <!-- Favicon -->
+  <link rel="icon" type="image/jpeg" href="logo.jpg">
+  <!-- Google Fonts: Inter & JetBrains Mono for modern developer aesthetics -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ==========================================
+       TOP CREATOR NAVBAR (Featuring Mohan Raj & Instagram)
+       ========================================== -->
+  <nav class="creator-navbar">
+    <div class="container nav-content">
+      <div class="nav-brand">
+        <img src="logo.jpg" alt="MR Logo" class="brand-logo-img floating-icon">
+        <span class="brand-title">Profile<span class="gradient-text animated-shimmer">Forge</span></span>
+      </div>
+
+      <div class="creator-badge-group">
+        <span class="creator-tagline">Created with ❤️ by <strong>Mohan Raj</strong></span>
+        <a href="https://www.instagram.com/mohan_raj.explains/" target="_blank" rel="noopener noreferrer" class="insta-pill-btn animated-pulse-glow">
+          <svg class="insta-svg" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+          <span>Follow @mohan_raj.explains</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Interactive 3D Background Canvas -->
+  <canvas id="space-3d-canvas"></canvas>
+
+  <!-- Ambient background glow effects -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- ==========================================
+       HERO & QUICK HOW-TO
+       ========================================== -->
+  <header class="site-hero anim-fade-in-1">
+    <div class="container">
+      <h1 class="hero-title">
+        Build a Killer <span class="gradient-text animated-shimmer">GitHub Profile</span> in Seconds
+      </h1>
+      <p class="hero-subtitle">
+        Type your GitHub username, select your best projects, and get a ready-to-use ChatGPT prompt that builds an eye-catching, recruiter-ready profile README.
+      </p>
+
+      <!-- 3D Floating Feature Chips -->
+      <div class="floating-3d-tags">
+        <div class="tag-3d" style="--delay: 0s;">
+          <span class="tag-3d-icon">⚡</span> <span>1-Click Prompt</span>
+        </div>
+        <div class="tag-3d" style="--delay: 0.6s;">
+          <span class="tag-3d-icon">🐍</span> <span>Contribution Snake</span>
+        </div>
+        <div class="tag-3d" style="--delay: 1.2s;">
+          <span class="tag-3d-icon">🚀</span> <span>Vercel Ready</span>
+        </div>
+        <div class="tag-3d" style="--delay: 1.8s;">
+          <span class="tag-3d-icon">💎</span> <span>Shields.io Badges</span>
+        </div>
+      </div>
+
+      <!-- 4-step quick guide at the very top -->
+      <section class="steps-card anim-fade-in-2" data-tilt="true">
+        <div class="steps-card-header">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="steps-card-title">⚡ How It Works (4 Quick Steps)</span>
+        </div>
+
+        <div class="steps-grid">
+          <div class="step-card" data-tilt="true">
+            <div class="step-icon-wrap">01</div>
+            <div class="step-details">
+              <h4>Create Profile Repo</h4>
+              <p>Create a repo named <em>identically</em> to your username. Set to <strong>Public</strong> and check <strong>Add README</strong>.</p>
+            </div>
+          </div>
+
+          <div class="step-card" data-tilt="true">
+            <div class="step-icon-wrap">02</div>
+            <div class="step-details">
+              <h4>Fill & Generate</h4>
+              <p>Type your username below, pick up to 4 repos, enter your skills, and click <strong>Copy Prompt</strong>.</p>
+            </div>
+          </div>
+
+          <div class="step-card" data-tilt="true">
+            <div class="step-icon-wrap">03</div>
+            <div class="step-details">
+              <h4>Paste in ChatGPT</h4>
+              <p>Paste the prompt into ChatGPT (free version works great) and copy the complete markdown code it gives you.</p>
+            </div>
+          </div>
+
+          <div class="step-card" data-tilt="true">
+            <div class="step-icon-wrap">04</div>
+            <div class="step-details">
+              <h4>Paste & Show Off</h4>
+              <p>Open <code>README.md</code> in your repo, replace all text, commit changes, and your profile is live!</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </header>
+
+  <!-- ==========================================
+       MAIN WORKFLOW CARDS
+       ========================================== -->
+  <main class="container main-content">
+
+    <!-- STEP 1: FETCH GITHUB PROFILE & REPOSITORIES -->
+    <section class="glass-panel anim-fade-in-3" data-tilt="true">
+      <div class="panel-header">
+        <span class="step-badge">Step 1</span>
+        <div>
+          <h2>Connect Your GitHub</h2>
+          <p class="panel-sub">We fetch your profile details and repositories safely using GitHub's public API.</p>
+        </div>
+      </div>
+
+      <div class="search-box-wrapper">
+        <div class="search-input-group">
+          <span class="input-prefix">github.com/</span>
+          <input 
+            type="text" 
+            id="username-input" 
+            placeholder="MohanRaj4327 or octocat" 
+            autocomplete="off"
+            spellcheck="false"
+          >
+        </div>
+        <button id="fetch-btn" class="btn-glow" type="button">
+          <span class="btn-text">Fetch My GitHub</span>
+          <span class="spinner" id="fetch-spinner" style="display:none;"></span>
+        </button>
+      </div>
+
+      <!-- Live status / error alert message box -->
+      <div id="status-message" class="status-box" style="display:none;"></div>
+
+      <!-- Profile preview (shown once fetched) -->
+      <div id="profile-preview" class="profile-hero-card" data-tilt="true" style="display:none;">
+        <div class="avatar-ring">
+          <img id="profile-avatar" src="" alt="Avatar" class="avatar-img">
+        </div>
+        <div class="profile-meta">
+          <div class="profile-meta-top">
+            <h3 id="profile-name"></h3>
+            <span class="profile-handle" id="profile-login"></span>
+          </div>
+          <p class="profile-bio-text" id="profile-bio"></p>
+        </div>
+      </div>
+
+      <!-- Repositories selection area -->
+      <div id="repos-container" class="repos-section" style="display:none;">
+        <div class="repos-toolbar">
+          <div>
+            <h3>Select Featured Projects <span class="counter-pill" id="selected-counter">0 / 4 Selected</span></h3>
+            <p class="panel-sub">Select the top projects you want recruiters and interviewers to see first.</p>
+          </div>
+          <!-- Fork filter toggle -->
+          <label class="custom-toggle">
+            <input type="checkbox" id="show-forks-checkbox">
+            <span class="toggle-slider"></span>
+            <span class="toggle-label">Include forked repositories</span>
+          </label>
+        </div>
+
+        <div id="repos-list" class="repos-grid"></div>
+
+        <div id="no-repos-message" class="empty-state-card" style="display:none;">
+          <div class="empty-icon">📂</div>
+          <h4>No public repositories found</h4>
+          <p>That's totally fine! Your profile prompt will highlight your skills, bio, and social connections.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 2: EXTRA INPUTS FOR STUDENT PROFILE -->
+    <section class="glass-panel" data-tilt="true">
+      <div class="panel-header">
+        <span class="step-badge">Step 2</span>
+        <div>
+          <h2>Your Skills & Bio</h2>
+          <p class="panel-sub">Write in your own words. ChatGPT will turn these into beautiful shields.io badges and descriptions.</p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <!-- Skills & Tools -->
+        <div class="form-group span-2">
+          <label for="skills-input">
+            Skills & Tools <span class="accent-star">*</span>
+            <span class="label-sub">(Programming languages, frameworks, databases, tools)</span>
+          </label>
+          <textarea 
+            id="skills-input" 
+            rows="3" 
+            placeholder="e.g. Java, Python, C++, HTML, CSS, JavaScript, React, MySQL, Git, GitHub, VS Code, Figma"
+          ></textarea>
+        </div>
+
+        <!-- About You -->
+        <div class="form-group span-2">
+          <label for="about-input">
+            About You <span class="accent-star">*</span>
+            <span class="label-sub">(1-2 short lines describing your education and goals)</span>
+          </label>
+          <input 
+            type="text" 
+            id="about-input" 
+            placeholder="e.g. Final-year IT student preparing for software engineering placements. Passionate about web development."
+          >
+        </div>
+
+        <!-- Typing Animation Lines -->
+        <div class="form-group span-2">
+          <label for="typing-input">
+            Animated Typewriter Lines 
+            <span class="label-sub">(2-3 short titles separated by semicolons ';')</span>
+          </label>
+          <input 
+            type="text" 
+            id="typing-input" 
+            placeholder="e.g. Aspiring Software Engineer; Problem Solver; Full-Stack Enthusiast"
+          >
+        </div>
+
+        <!-- LinkedIn URL -->
+        <div class="form-group">
+          <label for="linkedin-input">LinkedIn Profile URL <span class="optional-tag">(Optional)</span></label>
+          <input 
+            type="url" 
+            id="linkedin-input" 
+            placeholder="https://linkedin.com/in/yourusername"
+          >
+        </div>
+
+        <!-- Email -->
+        <div class="form-group">
+          <label for="email-input">Email Address <span class="optional-tag">(Optional)</span></label>
+          <input 
+            type="email" 
+            id="email-input" 
+            placeholder="your.email@example.com"
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- STEP 3: GENERATED CHATGPT PROMPT -->
+    <section class="glass-panel highlight-panel" data-tilt="true">
+      <div class="panel-header">
+        <span class="step-badge step-badge-fire">Step 3</span>
+        <div>
+          <h2>Your Ready-To-Copy ChatGPT Prompt</h2>
+          <p class="panel-sub">This prompt combines your GitHub stats, repo links, badges, and guidelines for ChatGPT.</p>
+        </div>
+      </div>
+
+      <div class="prompt-action-bar">
+        <button id="copy-prompt-btn" class="btn-gradient-cta" type="button">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <span>Copy Prompt for ChatGPT</span>
+        </button>
+        <span id="copy-feedback" class="copy-pill-toast" style="display:none;">✔ Copied to Clipboard!</span>
+      </div>
+
+      <!-- Cyber Terminal Window for Prompt -->
+      <div class="terminal-window glow-border-active" data-tilt="true">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="terminal-filename">chatgpt-master-prompt.txt (Read-Only)</span>
+          <span class="terminal-tag">Ready</span>
+        </div>
+        <textarea id="prompt-output" readonly rows="16" placeholder="Your master prompt will automatically generate here once you type your GitHub username above..."></textarea>
+      </div>
+    </section>
+
+    <!-- STEP 4: CONTRIBUTION SNAKE SETUP -->
+    <section class="glass-panel" data-tilt="true">
+      <div class="panel-header">
+        <span class="step-badge">Step 4</span>
+        <div>
+          <h2>Add the Contribution Snake Game (Super Cool!)</h2>
+          <p class="panel-sub">A snake that eats your green GitHub contribution dots! Uses free GitHub Actions.</p>
+        </div>
+      </div>
+
+      <div class="snake-cards-grid">
+        <div class="snake-instruction-card" data-tilt="true">
+          <div class="num-badge">1</div>
+          <div>
+            <h5>Create the workflow file</h5>
+            <p>In your profile repo, click <strong>Add file</strong> &rarr; <strong>Create new file</strong>. In the name box, type: <code class="inline-code">.github/workflows/snake.yml</code></p>
+          </div>
+        </div>
+
+        <div class="snake-instruction-card" data-tilt="true">
+          <div class="num-badge">2</div>
+          <div>
+            <h5>Enable Read & Write permissions</h5>
+            <p>In your repo: <strong>Settings</strong> &rarr; <strong>Actions</strong> &rarr; <strong>General</strong> &rarr; scroll to <strong>Workflow permissions</strong> &rarr; select <strong>Read and write permissions</strong> &rarr; <strong>Save</strong>.</p>
+          </div>
+        </div>
+
+        <div class="snake-instruction-card" data-tilt="true">
+          <div class="num-badge">3</div>
+          <div>
+            <h5>Run it once</h5>
+            <p>Go to the <strong>Actions</strong> tab &rarr; click <strong>Generate Snake Animation</strong> on the left &rarr; click <strong>Run workflow</strong>. In 30 seconds, your snake appears!</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Terminal Window for Snake Code -->
+      <div class="terminal-window" data-tilt="true">
+        <div class="terminal-bar">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <span class="terminal-filename">.github/workflows/snake.yml</span>
+          <button id="copy-snake-btn" class="btn-micro" type="button">
+            📋 Copy snake.yml
+          </button>
+        </div>
+        <span id="copy-snake-feedback" class="copy-pill-toast toast-micro" style="display:none;">✔ Copied!</span>
+        <pre class="terminal-code-box"><code id="snake-code">name: Generate Snake Animation
+
+on:
+  # Runs automatically every 12 hours
+  schedule:
+    - cron: "0 */12 * * *"
+  
+  # Allows you to manually trigger it from the Actions tab anytime
+  workflow_dispatch:
+  
+  # Runs on every push to the main branch
+  push:
+    branches:
+      - main
+
+jobs:
+  generate:
+    permissions:
+      contents: write
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      # Step 1: Checkout repository files
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Step 2: Generate the contribution snake animation
+      - name: Generate Snake Files
+        uses: Platane/snk@v3
+        with:
+          github_user_name: ${{ github.repository_owner }}
+          outputs: |
+            dist/github-snake.svg
+            dist/github-snake-dark.svg?palette=github-dark
+
+      # Step 3: Push the generated SVG animation to the 'output' branch
+      - name: Deploy snake SVG to output branch
+        uses: crazy-max/ghaction-github-pages@v3.1.0
+        with:
+          target_branch: output
+          build_dir: dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+</code></pre>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================
+       MODERN FOOTER
+       ========================================== -->
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <div class="footer-brand">
+        <img src="logo.jpg" alt="MR Logo" class="brand-logo-img floating-icon">
+        <span>GitHub Profile README Prompt Generator</span>
+      </div>
+
+      <div class="footer-creator">
+        <span>Designed & Built with ❤️ for college students by <strong>Mohan Raj</strong></span>
+        <a href="https://www.instagram.com/mohan_raj.explains/" target="_blank" rel="noopener noreferrer" class="insta-link-chip animated-pulse-glow">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+          </svg>
+          <span>Instagram: @mohan_raj.explains</span>
+        </a>
+      </div>
+
+      <div class="footer-bottom-note">
+        <span>Zero API keys • 100% Free • Open Source</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script logic -->
+  <script src="script.js"></script>
+</body>
+</html>
